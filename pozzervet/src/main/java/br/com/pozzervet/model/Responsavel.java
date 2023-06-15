@@ -29,6 +29,41 @@ public class Responsavel {
 	@JoinColumn(name="responsavel_id")
 	private Animal animal;
 
+	public Responsavel toResponsavel() {
+		
+		Responsavel responsavel = new Responsavel();
+		responsavel.setNome(this.nome);
+		responsavel.setCpf(this.cpf);
+		responsavel.setTelefone(this.telefone);
+		responsavel.setEmail(this.email);
+
+
+		return responsavel;
+	}
+
+	public Responsavel toResponsavelAtualizar(Responsavel responsavel) {
+	
+	
+	responsavel.setNome(this.nome);
+	responsavel.setCpf(this.cpf);
+	responsavel.setTelefone(this.telefone);
+	responsavel.setEmail(this.email);
+
+
+	return responsavel;
+	}
+	
+
+	public void fromResponsavel(Responsavel responsavel) {
+	
+	this.cpf=getCpf();
+	this.email=getEmail();
+	this.nome=getNome();
+	this.telefone=getTelefone();
+
+
+}
+	
 	
 	public Responsavel() {
 		

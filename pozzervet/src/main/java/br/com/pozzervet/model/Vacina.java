@@ -1,5 +1,7 @@
 package br.com.pozzervet.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +17,10 @@ public class Vacina {
 	private Long id;
 	
 	private String nome;
+	
+	private Long lote;
+	
+	private LocalDate validade;
 	
 	@ManyToOne
 	@JoinColumn(name="vacina_id")
@@ -59,6 +65,59 @@ public class Vacina {
 	public void setAtendimento(Atendimento atendimento) {
 		this.atendimento = atendimento;
 	}
+
+	public Vacina toVacina() {
+		
+		Vacina vacina = new Vacina();
+		
+		vacina.setNome(this.nome);
+		vacina.setLote(this.lote);
+		vacina.setValidade(this.validade);
+		return vacina;
+	}
+	
+	public Vacina toVacinaAtualizar(Vacina vacina) {
+		
+		
+		vacina.setNome(this.nome);
+		vacina.setLote(this.lote);
+		vacina.setValidade(this.validade);
+		return vacina;
+	}
+	
+	public void fromVacina(Vacina vacina) {
+		
+		this.nome=getNome();
+		this.lote=getLote();
+		this.validade=getValidade();
+
+	}
+
+	
+	
+	
+	public Long getLote() {
+		return lote;
+	}
+
+
+
+	public void setLote(Long lote) {
+		this.lote = lote;
+	}
+
+
+
+	public LocalDate getValidade() {
+		return validade;
+	}
+
+
+
+	public void setValidade(LocalDate validade) {
+		this.validade = validade;
+	}
+	
 	
 	
 }

@@ -8,65 +8,85 @@
 
 
 
-<form class="row g-3">
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </div>
-</form>
+<form id="formulario" th:object="${animal}"  action="/animal/salvar" method="POST" class=" row g-3">
+		<h3 class="text-primary" >Cadastrar Animal</h3>
+
+		<div class="col-md-6">
+			<label for="inputNome" class="form-label">Nome:</label> 
+			<input type="text" required name="nome" class="form-control" th:field="*{nome}" id="inputNome">
+		</div>
+		<div class="col-md-6">
+			<label for="inputTipo" class="form-label">Tipo:</label> 
+			<input type="text" required name="tipo" class="form-control" th:field="*{tipo}" id="inputTipo">
+		</div>
+		<div class="col-md-6">
+			<label for="inputRaca" class="form-label">Raça:</label> 
+			<input type="text" required name="raca" class="form-control" th:field="*{raca}" id="inputRaca">
+		</div>
+		<div class="col-md-6">
+			<label for="inputCor" class="form-label">Cor:</label> 
+			<input type="text" required name="cor" class="form-control" th:field="*{cor}" id="inputCor">
+		</div>
+		<div class="col-md-6">
+			<label for="inputPeso" class="form-label">Peso:</label> 
+			<input  required name="peso" class="form-control" th:field="*{peso}" id="inputPeso">
+		</div>
+		<div class="col-md-6">
+			<label for="inputAltura" class="form-label">Altura:</label> 
+			<input type="text" required name="altura" class="form-control" th:field="*{altura}" id="inputAltura">
+		</div>	
+		
+		<div class="col-md-6">
+			<label for="inputAltura" class="form-label">Data De Nascimento:</label> 
+			<input type="date" required name="dataNascimento" class="form-control" th:field="*{dataNascimento}" id="inputDataNascimento">
+		</div>
+
+		
+		<div class="col-md-6">
+		<label for="selectResponsavel" class="form-label">Responsável:</label> 
+		<select name="responsavelAnimal" th:field="*{responsavelAnimal}" id="selectResponsavel" class="form-control">
+				<option value="" selected>--Selecionar--</option>
+				<option th:each="list : ${list}"
+						th:value="${list.nome}"
+						th:text="${list.nome}"
+						th:name="responsavelAnimal"
+						th:field="*{responsavelAnimal}">
+				</option>
+				
+			
+			</select>
+		</div>
+
+			
+		<div class="col-md-4 caixa-botoes">
+			<div class=" d-flex gap-2">
+				<button i type="submit" class="botao btn-lg btn-success">Salvar</button>
+				<button type="reset" disabled class="botao btn btn-lg btn-danger">Excluir</button>
+				<a type="button" href="/animal/lista" class="botao pt-3 btn btn-lg btn-light border ">Voltar</a>
+			</div>
+		</div>
+	</form>
+
+
 
 </body>
 
 <style type="text/css">
 
-form{
-margin-left: 10%
+
+
+#formulario {
+	width: 60%;
+	margin: 5% 0 0 20%;
+	background-color: white;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	height: 33rem;
+	padding-bottom: 2rem;
 }
 
+
+
 </style>
-
-
-
-
-
-
 
 </html>
