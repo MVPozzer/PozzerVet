@@ -29,18 +29,55 @@ public class Atendimento {
 	
 	private LocalDateTime dataHora;
 	
-	private String Descricao;
+	private String descricao;
 	
-	@OneToMany(mappedBy = "atendimento", orphanRemoval = true)
-	@Cascade(CascadeType.ALL)
-	List<Profissional> profissionais;
+	private String vacina;
 	
-	@OneToMany(mappedBy = "atendimento", orphanRemoval = true)
-	@Cascade(CascadeType.ALL)
-	List<Vacina> vacinas;
+	private String animalAtendimento;
+	
+	private String profissional;
+	
+	@OneToMany(mappedBy = "atendimento")
+	List<Profissional> listaProfissional;
+	
+	@OneToMany(mappedBy = "atendimento")
+	List<Vacina> listaVacina;
 
 	
+	public Atendimento toAtendimento() {
+		
+		Atendimento atendimento = new Atendimento();
+		atendimento.setAnimalAtendimento(this.animalAtendimento);
+		atendimento.setDataHora(this.dataHora);
+		atendimento.setDescricao(this.descricao);
+		atendimento.setProfissional(this.profissional);
+		atendimento.setVacina(this.vacina);
+
+		return atendimento;
+	}
+
+public Atendimento toAtendimentoAtualizar(Atendimento atendimento) {
 	
+	
+	atendimento.setAnimalAtendimento(this.animalAtendimento);
+	atendimento.setDataHora(this.dataHora);
+	atendimento.setDescricao(this.descricao);
+	atendimento.setProfissional(this.profissional);
+	atendimento.setVacina(this.vacina);
+
+	return atendimento;
+}
+
+
+public void fromAtendimento(Atendimento atendimento) {
+	
+	this.animalAtendimento=getAnimalAtendimento();
+	this.dataHora=getDataHora();
+	this.descricao=getDescricao();
+	this.vacina=getVacina();
+	this.profissional=getProfissional();
+	
+}
 	
 	
 
@@ -54,21 +91,16 @@ public class Atendimento {
 
 
 
-
-
 	public Atendimento(Long id, Animal animal, LocalDateTime dataHora, String descricao,
-			List<Profissional> profissionais, List<Vacina> vacinasa) {
+			String profissional, String vacina) {
 		super();
 		this.id = id;
 		this.animal = animal;
 		this.dataHora = dataHora;
-		Descricao = descricao;
-		this.profissionais = profissionais;
-		this.vacinas = vacinas;
-		
+		this.descricao = descricao;
+		this.profissional = profissional;
+		this.vacina = vacina;
 	}
-
-
 
 
 
@@ -84,13 +116,9 @@ public class Atendimento {
 
 
 
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-
 
 
 
@@ -106,13 +134,9 @@ public class Atendimento {
 
 
 
-
-
 	public void setAnimal(Animal animal) {
 		this.animal = animal;
 	}
-
-
 
 
 
@@ -128,8 +152,6 @@ public class Atendimento {
 
 
 
-
-
 	public void setDataHora(LocalDateTime dataHora) {
 		this.dataHora = dataHora;
 	}
@@ -139,13 +161,9 @@ public class Atendimento {
 
 
 
-
-
 	public String getDescricao() {
-		return Descricao;
+		return descricao;
 	}
-
-
 
 
 
@@ -153,7 +171,31 @@ public class Atendimento {
 
 
 	public void setDescricao(String descricao) {
-		Descricao = descricao;
+		this.descricao = descricao;
+	}
+
+	public String getVacina() {
+		return vacina;
+	}
+
+	public void setVacina(String vacina) {
+		this.vacina = vacina;
+	}
+
+	public String getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(String profissional) {
+		this.profissional = profissional;
+	}
+
+	public String getAnimalAtendimento() {
+		return animalAtendimento;
+	}
+
+	public void setAnimalAtendimento(String animalAtendimento) {
+		this.animalAtendimento = animalAtendimento;
 	}
 
 
@@ -162,45 +204,7 @@ public class Atendimento {
 
 
 
-
-	public List<Profissional> getProfissionais() {
-		return profissionais;
-	}
-
-
-
-
-
-
-
-
-	public void setProfissionais(List<Profissional> profissionais) {
-		this.profissionais = profissionais;
-	}
-
-
-
-
-
-
-
-
-	public List<Vacina> getVacinas() {
-		return vacinas;
-	}
-
-
-
-
-
-
-
-
-	public void setVacinas(List<Vacina> vacinas) {
-		this.vacinas = vacinas;
-	}
-
-
+	
 
 	
 	
