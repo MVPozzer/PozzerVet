@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
@@ -13,13 +13,13 @@
 <div th:replace="~{WEB/fragmentos :: menu}"></div>
 
 <form id="formulario" th:object="${atendimento}"  action="/atendimento/salvar" method="POST" class=" row g-3">
-		<h3 class="text-primary" >Lançar Atendimento</h3>
+		<h3 class="text-success" >Editar Atendimento</h3>
 
 		
 		<div class="col-md-6">
 			<label for="selectAnimalAtendimento" class="form-label">Animal:</label> 
 				<select name="animalAtendimento" th:field="*{animalAtendimento}" id="selectAnimalAtendimento" class="form-control">
-					<option value="" selected>--Selecionar--</option>
+					<option value="" selected>Selecionar</option>
 					<option th:each="list : ${listAnimal}"
 							th:value="${list.nome}"
 							th:text="${list.nome}"
@@ -31,7 +31,7 @@
 		<div class="col-md-6">
 			<label for="selectAnimal" class="form-label">Profissional:</label> 
 				<select name="profissional" th:field="*{profissional}" id="selectProfissional" class="form-control">
-					<option value="" selected>--Selecionar--</option>
+					<option value="" selected>Selecionar</option>
 					<option th:each="list : ${listProfissional}"
 							th:value="${list.nome}"
 							th:text="${list.nome}"
@@ -43,7 +43,7 @@
 		<div class="col-md-6">
 			<label for="selectAnimal" class="form-label">Vacina:</label> 
 				<select name="vacina" th:field="*{vacina}" id="selectVacina" class="form-control">
-					<option value="" selected>--Selecionar--</option>
+					<option value="" selected>Selecionar</option>
 					<option th:each="list : ${listVacina}"
 							th:value="${list.nome}"
 							th:text="${list.nome}"

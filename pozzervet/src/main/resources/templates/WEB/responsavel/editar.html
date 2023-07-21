@@ -13,7 +13,7 @@
 <div th:replace="~{WEB/fragmentos :: menu}"></div>
 
 <form id="formulario" th:object="${responsavel}"  th:action="@{/responsavel/{id}/atualizar (id = ${responsavel.id})}" method="POST" class=" row g-3">
-	<h3 class="text-primary" >Editar Responsável</h3>
+	<h3 class="text-success" >Editar Responsável</h3>
 
 		<div class="col-md-6">
 			<label for="inputNome" class="form-label">Nome</label> 
